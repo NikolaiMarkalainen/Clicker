@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Reaction Gaming</title>
+    <style type="text/css">
+    body{
+        font-family: 'Times New Roman', Times, serif;
+    }
+    #shape{
+        width:100px;
+        height:100px;
+        background-color: rgb(12, 91, 160);
+        position:relative;
+        top: 50px;
+        left: 50px;
+        right: 50px;
+        bottom: 50px;
+    }
+    </style>
+
+</head>
+
+<body>
+    <h1>REACTION GAME</h1>
+    <p>Click the shape as fast as you can?</p>
+    <p>Your time: <span id="timeTaken"></span></p>
+    <div id="shape"></div>
+    <script type="text/javascript">
+       clearTimeout();
+      var start = new Date().getTime();
+      function randomcolor(){
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++){
+                color += letters[Math.floor(Math.random()* 16)]
+            }
+            return color;
+        }
+        function randomShapes(min=10,max=200 ){
+            return  Math.floor(Math.random()*(max-min+1)+min);
+        }
+        revealshape = function(){
+            document.getElementById("shape").style.display ="block";
+            document.getElementById("shape").style.backgroundColor = randomcolor();
+            document.getElementById("shape").style.width=randomShapes()+"px";
+            document.getElementById("shape").style.height=randomShapes()+"px";
+            if(Math.random() > 0.5){
+            document.getElementById("shape").style.borderRadius="50%";
+            }
+            else{
+                document.getElementById("shape").style.borderRadius="0%";
+            }
+        }
+        triggerDelayTimer = function(){
+          setTimeout(revealshape, Math.random() * 200)
+        }
+        document.getElementById("shape").onclick=function(){ 
+            triggerDelayTimer()
+            var end = new Date().getTime();
+            var timeTaken = (end - start) / 1000;
+            document.getElementById("timeTaken").innerHTML=timeTaken +"s";
+            start=new Date().getTime();
+            document.getElementById("shape").style.display="none";
+            var top=Math.random();
+            top=top*300;                
+            var left=Math.random();
+            left = left * 300;
+            var bottom = Math.random();
+            bottom = bottom*300;
+            var right = Math.random();
+            right = right*300;
+            document.getElementById("shape").style.top=top+"px";
+            document.getElementById("shape").style.left=left+"px";
+            document.getElementById("shape").style.right=right+"px";
+            document.getElementById("shape").style.bottom=bottom +"px"; 
+        }   
+    </script>
+
+</body>
+
+
+</html>

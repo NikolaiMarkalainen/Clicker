@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Click fast</title>
+    <link type="text/css" rel="stylesheet" href="styles.css">
+<style>
+    #shapes{
+        display:none;
+    }
+</style>
+
+<div id="shapes">
+    <div class="circle"></div>
+    <div class="circle2"></div>
+    <div class="circle3"></div>
+    <div class="square"></div>
+    <div class="square2"></div>
+    <div class="square3"></div>
+</div>
+
+</head> 
+<body>
+    <button type="button"
+    onclick="random()"
+    id="start">Start the Game
+    </button>
+<script type="text/javascript">
+document.getElementById("start").onclick=function Random(){
+    GenerateLine = (x) =>{
+    return Math.floor(Math.random()*6);
+    }
+
+var functions = [dSqu, dCir];
+setInterval(function(){
+    functions[Math.floor(Math.random()* functions.length)]();
+},   200);
+
+
+let result = GenerateLine(6);
+    console.log(result);
+
+var manyshapes = ["circle", "circle1","circle2","square","square2","square3"];
+
+manyshapes = manyshapes[result];
+console.log(manyshapes[result]);
+console.log(manyshapes);
+}
+if(result<6){
+    document.getElementById("shapes").style.display="block";
+}
+
+
+</script>
+</body>
+</html>
